@@ -237,4 +237,9 @@ public class Admin extends User implements AdminActions {
         System.out.println("Nama: " + getNama());
         System.out.println("NIM : " + getNim());
     }
+
+    // ✅ Tambahan untuk perbaikan error getUsername()
+    public String getUsername() {
+        return username;
+    }
 }

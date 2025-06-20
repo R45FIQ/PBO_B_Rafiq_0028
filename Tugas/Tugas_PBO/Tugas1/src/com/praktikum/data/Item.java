@@ -1,49 +1,70 @@
 package com.praktikum.data;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Item {
-    private String itemName;
-    private String description;
-    private String location;
-    private String status; // "Reported", "Claimed", dll.
+    private final StringProperty itemName;
+    private final StringProperty description;
+    private final StringProperty location;
+    private final StringProperty status;
 
     // Constructor
     public Item(String itemName, String description, String location, String status) {
-        this.itemName = itemName;
-        this.description = description;
-        this.location = location;
-        this.status = status;
+        this.itemName = new SimpleStringProperty(itemName);
+        this.description = new SimpleStringProperty(description);
+        this.location = new SimpleStringProperty(location);
+        this.status = new SimpleStringProperty(status);
     }
 
-    // Getter dan Setter
+    // Getter biasa
     public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+        return itemName.get();
     }
 
     public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+        return description.get();
     }
 
     public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
+        return location.get();
     }
 
     public String getStatus() {
-        return status;
+        return status.get();
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    // Setter biasa
+    public void setItemName(String value) {
+        itemName.set(value);
+    }
+
+    public void setDescription(String value) {
+        description.set(value);
+    }
+
+    public void setLocation(String value) {
+        location.set(value);
+    }
+
+    public void setStatus(String value) {
+        status.set(value);
+    }
+
+    // Property getters untuk TableView
+    public StringProperty itemNameProperty() {
+        return itemName;
+    }
+
+    public StringProperty descriptionProperty() {
+        return description;
+    }
+
+    public StringProperty locationProperty() {
+        return location;
+    }
+
+    public StringProperty statusProperty() {
+        return status;
     }
 }
